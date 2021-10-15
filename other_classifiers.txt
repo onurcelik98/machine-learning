@@ -1,0 +1,34 @@
+Some classification algorithms:
+
+SVM:
+    -Considers nearest data points (support vectors) from each cluster.
+    -Creates a hyperplane that maximizes the margin (distance to both support vectors).
+    -If not linear, it maps the dataset to a higher dimension, finds the hyperplane, and transforms back to original dimension.
+    -Kernel trick: It does not explicitly map all data points to another dimension, it uses the proper kernel function to
+    implicitly map the data information between those dimensions (less computation-intensive).
+    -Great for performing binary classification on small datasets with many features.
+    -Handles linearity and non-linearity well.
+    -It has a relatively high training time, and is sensitive to outliers.
+
+Random Forest: (type of bagging algorithm)
+    -Builds many decision trees in training time, feeding each with a different random sample with replacement of the training set (bagging).
+    -While classifying, it counts the predicted labels by each tree for the data point and returns the most-predicted one.
+    -While regressing, returns an average of the predictions of the trees.
+    -Usually performs better than decision trees, as it handles the overfitting problem of decision trees.
+
+AdaBoost: (type of boosting algorithm)
+    -Tries to build a strong classifier from initial weak classifiers (such as decision trees with very limited depths (decision stumps)).
+    -Creation of weak learners are not in parallel as in Random Forest, but it is sequential.
+    -The random samples created from the dataset is weighted, i.e. it is in favor of "difficult-to-classify" samples.
+    -Weak classifiers that perform worse than a particular threshold are discarded, better ones are given more weight while building the next generations.
+    -By doing these adjustments, it aims to create the best classifier that fits the dataset.
+    -A popular and successful algorithm, yet sometimes may suffer from overfitting.
+
+Gradient Boosting: (type of boosting algorithm)
+    -Similar to AdaBoost, but uses a loss function and its gradient while building new weak classifiers.
+    -Weak classifiers in this algorithm are regressor decision trees, as the algorithm is generalized for multiclass classification and regression.
+    -Usually performs better than Random Forest.
+
+XGBoost (Extreme Gradient Boosting): (type of boosting algorithm)
+    -A type of gradient boosting algorithm where the second order gradients of the loss function are calculated instead of first.
+    -Its training is faster and can be parallelized.

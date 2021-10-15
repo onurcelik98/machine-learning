@@ -1,0 +1,24 @@
+Data-1:
+	my model:
+		RMSE     = 8.934221828369814
+		R2 score = 0.8583193574573535
+	sklearn.SGDRegressor:
+		RMSE     = 9.639027820581948
+		R2 score = 0.8653008697073614
+	
+Data-2:
+	my model:
+		RMSE     = 9.026213359234278
+		R2 score = 0.9014583053346961
+	sklearn.SGDRegressor:
+		RMSE     = 9.474972257092869
+		R2 score = 0.8927901287937507
+		
+Data-3:
+	my model:
+		RMSE     = 9.189898833417777
+		R2 score = 0.9286153307432179
+	sklearn.SGDRegressor:
+		RMSE     = 9.7267707107168
+		R2 score = 0.9358496152767632
+	

@@ -1,0 +1,39 @@
+Gradient Descent Optimization Algorithms (Overview)
+
+Momentum
+    -Like a rolling ball.
+    -Accumulates steps to determine the direction and the magnitude of the next step.
+
+Nesterov accelerated gradient (NAG)
+    -Like a consciously rolling ball.
+    -Similar to momentum, but takes into account the upcoming approximate gradient instead of the current one.
+    -Has an intuition on where it is heading towards.
+
+Adagrad
+    -Adapts the learning rate for each parameter separately and repetitively by using sum of squares of previous gradients.
+    -Eliminates the need to tune the learning rate beforehand.
+
+Adadelta
+    -Similar to Adagrad, but uses the decaying average of squares of previous gradients.
+    -Prevents infinitesimally small learning rates that Adagrad might potentially produce in time.
+
+RMSdrop
+    -Identical to Adadelta, developed independently around the same time.
+    Also deals with the very small learning rates problem emerging in Adagrad method.
+
+Adam
+    -Uses a combination of decaying averages of past and past squared gradients.
+    -This effectively combines RMSdrop and Momentum algorithms.
+    -Their coefficients ß_1 and ß_2 control the decay rates of each term.
+    -Also applies bias-correction to these, helping it perform slighly better, especially on the initial time steps.
+    -Arguably the best-performing algorithm so far in most scenarios.
+
+AdaMax
+    -?
+
+Nadam
+    -Similar to Adam, but it combines RMSdrop with Momentum, it combines RMSdrop with NAG (a better approach).
+
+AMSGrad
+    -Uses the maximum of past squared gradients rather than the exponential average to update the parameters.
+    -Whether it performs better than Adam is yet arguable.

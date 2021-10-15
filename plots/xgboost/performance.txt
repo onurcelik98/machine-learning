@@ -1,0 +1,41 @@
+Input variables: mpg
+Target: fuelType
+Model: sklearn
+
+Confussion matrix:
+
+[[1638    0  165]
+ [   3   13    0]
+ [ 152    0  564]]
+ 
+Accuracy: 0.873767258382643
+
+              precision    recall  f1-score   support
+      Diesel       0.91      0.91      0.91      1803
+      Hybrid       1.00      0.81      0.90        16
+      Petrol       0.77      0.79      0.78       716
+    accuracy                           0.87      2535
+   macro avg       0.90      0.84      0.86      2535
+weighted avg       0.87      0.87      0.87      2535
+
+---------------------------------------------------------------------
+
+Input variables: mpg, engineSize, transmission, year, model
+Target: fuelType
+Model: sklearn
+
+Confussion matrix:
+[[1791    0    2]
+ [   2    8    0]
+ [   5    0  727]]
+ 
+Accuracy: 0.9964497041420118
+
+              precision    recall  f1-score   support
+      Diesel       1.00      1.00      1.00      1793
+      Hybrid       1.00      0.80      0.89        10
+      Petrol       1.00      0.99      1.00       732
+    accuracy                           1.00      2535
+   macro avg       1.00      0.93      0.96      2535
+weighted avg       1.00      1.00      1.00      2535
+
