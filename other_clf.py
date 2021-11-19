@@ -14,6 +14,8 @@ from sklearn.metrics import classification_report
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
+from statistics import mode
+from sklearn.ensemble import VotingClassifier
 
 # Parsing the csv into a dataframe
 df = pd.read_csv('merc.csv')
@@ -45,11 +47,11 @@ df2 = df.drop(columns=["price", "mileage", "tax"])
 number_of_inputs = 5
 
 # Splitting data
-df_dummies = pd.get_dummies(df2[["model", "year", "transmission"]])
+df_dummies = pd.get_dummies(df2[["fuelType", "year", "transmission"]])
 df_dummies["mpg"] = df2["mpg"]
 df_dummies["engineSize"] = df2["engineSize"]
 X = np.array(df_dummies)
-y = np.array(df2["fuelType"])
+y = np.array(df2["model"])
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 
@@ -61,10 +63,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Measuring
-print("Confussion matrix:")
-print(f"{confusion_matrix(y_test, y_pred)}\n")
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"{classification_report(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Plotting
 if (number_of_inputs == 1):
@@ -88,10 +90,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Measuring
-print("Confussion matrix:")
-print(f"{confusion_matrix(y_test, y_pred)}\n")
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"{classification_report(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Plotting
 if (number_of_inputs == 1):
@@ -115,10 +117,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Measuring
-print("Confussion matrix:")
-print(f"{confusion_matrix(y_test, y_pred)}\n")
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"{classification_report(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Plotting
 if (number_of_inputs == 1):
@@ -142,10 +144,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Measuring
-print("Confussion matrix:")
-print(f"{confusion_matrix(y_test, y_pred)}\n")
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"{classification_report(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Plotting
 if (number_of_inputs == 1):
@@ -169,10 +171,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Measuring
-print("Confussion matrix:")
-print(f"{confusion_matrix(y_test, y_pred)}\n")
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"{classification_report(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Plotting
 if (number_of_inputs == 1):
@@ -196,10 +198,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Measuring
-print("Confussion matrix:")
-print(f"{confusion_matrix(y_test, y_pred)}\n")
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"{classification_report(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Plotting
 if (number_of_inputs == 1):
@@ -216,8 +218,6 @@ else:
 
 
 #%% k-NN
-from sklearn.neighbors import KNeighborsClassifier
-
 
 # Training model and making predictions
 model = KNeighborsClassifier()
@@ -225,10 +225,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Measuring
-print("Confussion matrix:")
-print(f"{confusion_matrix(y_test, y_pred)}\n")
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"{classification_report(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Plotting
 if (number_of_inputs == 1):
@@ -243,6 +243,81 @@ else:
     plt.scatter(X[ : , 0], X[ : , 1], s =50, c="b")
     plt.show()
 
+
+#%% Ensemble (XGBoost, Random Forest, k-NN, Decision Tree)
+
+model_xgb = XGBClassifier()
+model_xgb.fit(X_train, y_train)
+
+model_rf = RandomForestClassifier()
+model_rf.fit(X_train, y_train)
+
+model_knn = KNeighborsClassifier()
+model_knn.fit(X_train, y_train)
+
+model_dt = DecisionTreeClassifier()
+model_dt.fit(X_train, y_train)
+
+
+y_pred_xgb = model_xgb.predict(X_test)
+y_pred_rf = model_rf.predict(X_test)
+y_pred_knn = model_knn.predict(X_test)
+y_pred_dt = model_dt.predict(X_test)
+
+
+length = len(y_pred_xgb)
+y_pred = [None] * length
+for i in range(length):
+    votes = [y_pred_rf[i], y_pred_dt[i], y_pred_knn[i]]
+    y_pred[i] = mode(votes)
+
+# Measuring
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
+print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
+
+
+#%% Ensemble (XGBoost, Random Forest, k-NN, Decision Tree)
+
+# Hard Voting
+vc_hard = VotingClassifier(
+    estimators=[("xgb", XGBClassifier()),
+                ("rf", RandomForestClassifier()),
+                ("knn", KNeighborsClassifier()),
+                ("dt", DecisionTreeClassifier())
+    ],
+    voting="hard")
+
+vc_hard.fit(X_train, y_train)
+y_pred = vc_hard.predict(X_test)
+
+# Measuring
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
+print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
+
+
+#%% Ensemble (XGBoost, Random Forest, k-NN, Decision Tree)
+
+# Soft Voting
+vc_soft = VotingClassifier(
+    estimators=[("xgb", XGBClassifier()),
+                ("rf", RandomForestClassifier()),
+                ("knn", KNeighborsClassifier()),
+                ("dt", DecisionTreeClassifier())
+    ],
+    voting="soft")
+
+vc_soft.fit(X_train, y_train)
+y_pred = vc_soft.predict(X_test)
+
+# Measuring
+# print("Confussion matrix:")
+# print(f"{confusion_matrix(y_test, y_pred)}\n")
+print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
+# print(f"{classification_report(y_test, y_pred)}\n")
 
 # Accuracy      = (correctly predicted observation) / (total observations)
 #               = (TP+TN) / (TP+FP+FN+TN)

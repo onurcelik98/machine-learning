@@ -1,0 +1,19 @@
+Input variables: mpg, engineSize, transmission
+Target: fuelType (k=3, test_size=len(X)*0.02)
+Model: sklearn
+
+Confussion matrix:
+[[145   0  32]
+ [  0   3   0]
+ [ 19   0  55]]
+ 
+Accuracy: 0.7992125984251969
+
+              precision    recall  f1-score   support
+      Diesel       0.88      0.82      0.85       177
+      Hybrid       1.00      1.00      1.00         3
+      Petrol       0.63      0.74      0.68        74
+    accuracy                           0.80       254
+   macro avg       0.84      0.85      0.84       254
+weighted avg       0.81      0.80      0.80       254
+

@@ -84,13 +84,13 @@ X_1 = 5*(np.random.rand(1000, 1) - 0.5)
 y_1 = -4*(X_1**3) + 4*(X_1**2) - 30 + noise
 
 
-# Generating synthetic data 1
+# Generating synthetic data 2
 noise = np.random.normal(0, 7, 1000).reshape(1000, 1) + 20 * np.random.rand(1000, 1)
 X_2 = 5*(np.random.rand(1000, 1) - 0.5)
 y_2 = +4*(X_2**3) + 8*(X_2**2) - 30 + noise
 
 
-# Generating synthetic data 1
+# Generating synthetic data 3
 noise = np.random.normal(0, 7, 1000).reshape(1000, 1) + 20 * np.random.rand(1000, 1)
 X_3 = 5*(np.random.rand(1000, 1) - 0.5)
 y_3 = -5*(X_3**3) - 12*(X_3**2) - 30 + noise

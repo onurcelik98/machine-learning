@@ -1,0 +1,82 @@
+Loading scores:
+	X0   -0.707107
+	X1    0.707107
+	
+	
+---------------------------------------------------------------------
+
+K_means (implementation):
+	Confussion matrix:
+	[[328   6   0]
+	 [  7 326   0]
+	 [  0   0 333]]
+	 
+	Accuracy: 0.987
+	
+		          precision    recall  f1-score   support
+		       0       0.98      0.98      0.98       334
+		       1       0.98      0.98      0.98       333
+		       2       1.00      1.00      1.00       333
+		accuracy                           0.99      1000
+	   macro avg       0.99      0.99      0.99      1000
+	weighted avg       0.99      0.99      0.99      1000
+	
+	
+---------------------------------------------------------------------
+
+K_means (sklearn):
+	Confussion matrix:
+	[[328   6   0]
+	 [  7 326   0]
+	 [  0   0 333]]
+	 
+	Accuracy: 0.987
+	
+		          precision    recall  f1-score   support
+		       0       0.98      0.98      0.98       334
+		       1       0.98      0.98      0.98       333
+		       2       1.00      1.00      1.00       333
+		accuracy                           0.99      1000
+	   macro avg       0.99      0.99      0.99      1000
+	weighted avg       0.99      0.99      0.99      1000
+	
+
+---------------------------------------------------------------------
+
+Hierarchical (sklearn):
+	Confussion matrix:
+	[[330   4   0]
+	 [ 36 297   0]
+	 [  0   0 333]]
+	 
+	Accuracy: 0.96
+	
+		          precision    recall  f1-score   support
+		       0       0.90      0.99      0.94       334
+		       1       0.99      0.89      0.94       333
+		       2       1.00      1.00      1.00       333
+		accuracy                           0.96      1000
+	   macro avg       0.96      0.96      0.96      1000
+	weighted avg       0.96      0.96      0.96      1000
+
+
+---------------------------------------------------------------------
+
+DBSCAN (sklearn):
+	Confussion matrix:
+	[[  0   0   0   0]   --------->>   This also includes "noise" row/column.
+	 [ 13 315   6   0]                 Thus, metrics may not be very meaningful in this case.
+	 [ 26   6 301   0]
+	 [ 28   0   0 305]]
+	 
+	Accuracy: 0.921
+	
+		          precision    recall  f1-score   support
+		      -1       0.00      0.00      0.00         0
+		       0       0.98      0.94      0.96       334
+		       1       0.98      0.90      0.94       333
+		       2       1.00      0.92      0.96       333
+		accuracy                           0.92      1000
+	   macro avg       0.74      0.69      0.71      1000
+	weighted avg       0.99      0.92      0.95      1000
+

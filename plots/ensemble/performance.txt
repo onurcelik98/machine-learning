@@ -1,0 +1,58 @@
+Input variables: mpg, engineSize, transmission, year, fuelType
+Target: model
+Models: sklearn
+
+
+Logistic Regression:
+Accuracy: 0.37041420118343193
+
+Decision Tree:
+Accuracy: 0.8386587771203156
+
+SVM:
+Accuracy: 0.3487179487179487
+
+kNN:
+Accuracy: 0.7637080867850099
+
+Random Forest:
+Accuracy: 0.831163708086785
+
+AdaBoost:
+Accuracy: 0.3708086785009862
+
+XGBoost:
+Accuracy: 0.8433925049309665
+
+
+Ensemble Learners:
+	XGBoost, Random Forest, Decision Tree, k-Nearest Neighbors:
+		Hard Voting:
+			Accuracy: 0.8398422090729784
+		Soft Voting:
+			Accuracy: 0.8351084812623274
+	
+	XGBoost, Random Forest, Decision Tree:
+		Hard Voting:
+			Accuracy: 0.8378698224852071
+		Soft Voting:
+			Accuracy: 0.8382642998027613
+	
+	XGBoost, Random Forest, k-Nearest Neighbors:
+		Hard Voting:
+			Accuracy: 0.8355029585798817
+		Soft Voting:
+			Accuracy: 0.829585798816568
+	
+	XGBoost, Decision Tree, k-Nearest Neighbors:
+		Hard Voting:
+			Accuracy: 0.8390532544378698
+		Soft Voting:
+			Accuracy: 0.8351084812623274
+	
+	Random Forest, Decision Tree, k-Nearest Neighbors:
+		Hard Voting:
+			Accuracy: 0.8323471400394478
+		Soft Voting:
+			Accuracy: 0.8315581854043392
+			

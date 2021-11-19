@@ -1,0 +1,24 @@
+Reinforcement Learning Notes:
+
+Reinforcement Learning:
+    -One of three basic machine learning paradigms (others being supervised learning and unsupervised learning).
+    -No labels initially.
+    -As the reinforcement agent makes decisions, a real-valued reward (or a punishment) is assigned to it cumulatively.
+    -The goal is to maximize the reward by making the "right" decisions, considering the present and the future.
+    -The agent is eventually able to distinguish good decisions from bad ones.
+        -Exploration: Making a totally new decision without prior knowledge about its result (e.g. randomly).
+        -Exploitation: Making a decision using the experience the agent has gathered on its previous attempts.
+    -Example: AlphaZero (Deepmind's chess bot)
+
+Q-learning:
+    -A particular reinforcement learning algorithm.
+    -Keeps a "Q-table" to fill as the agent performs.
+    -The agent then uses this Q-table to decide on the best move when it is on a particular state (aka exploitation).
+    -After each move (either exploring or exploiting), the Q-table is updated with the outcome of that [state, action] tuple.
+    -Epsilon: Parameter to set the balance between exploring and exploiting actions.
+    -Learning rate: Parameter to set how much new entries override the current values of the Q-table.
+    -Discount factor: Parameter to set the agent's tendency towards valuing potential long-term rewards over short-term rewards.
+    -Off-policy(?)
+
+SARSA: ?
+    -On-policy(?)
